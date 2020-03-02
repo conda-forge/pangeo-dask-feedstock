@@ -5,15 +5,15 @@ package:
   version: {{ version }}
 
 build:
-  number: 0
+  number: 2
   noarch: generic
 
 requirements:
   run:
-    - dask-kubernetes >=0.10
-    - dask >=2.11
-    - distributed >=2.11
-    - tornado >=6
+    - dask-kubernetes =0.10*
+    - dask =2.11*
+    - distributed =2.11*
+    - tornado =6*
 
 test:
   imports:
@@ -27,4 +27,5 @@ about:
 
 extra:
   recipe-maintainers:
-    - scottyhq 
+    - scottyhq
+    - jhamman
