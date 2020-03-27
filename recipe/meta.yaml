@@ -1,19 +1,19 @@
-{% set version = "0.0.2" %}
+{% set version = "0.0.3" %}
 
 package:
   name: pangeo-dask
   version: {{ version }}
 
 build:
-  number: 2
+  number: 0
   noarch: generic
 
 requirements:
   run:
+    - dask =2.13*
+    - distributed =2.13*
+    - dask-gateway =0.6*
     - dask-kubernetes =0.10*
-    - dask =2.11*
-    - distributed =2.11*
-    - tornado =6*
 
 test:
   imports:
@@ -29,3 +29,4 @@ extra:
   recipe-maintainers:
     - scottyhq
     - jhamman
+    - TomAugspurger
