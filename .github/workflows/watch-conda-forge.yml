@@ -1,0 +1,88 @@
+# Check for new versions of dask on Conda Forge
+name: WatchCondaForge
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    if: github.repository == 'conda-forge/pangeo-dask-feedstock'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Get latest dask version
+        id: latest_version_dask
+        uses: jhamman/gha-anaconda-package-version@feature/calver
+        with:
+          org: "conda-forge"
+          package: "dask"
+
+      - name: Find and Replace Base
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "meta.yml"
+          find: "dask =.*"
+          replace: "dask =${{ steps.latest_version_dask.outputs.version }}"
+
+      - name: Get latest distributed version
+        id: latest_version_distributed
+        uses: jhamman/gha-anaconda-package-version@feature/calver
+        with:
+          org: "conda-forge"
+          package: "distributed"
+
+      - name: Find and Replace Base
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "meta.yml"
+          find: "distributed =.*"
+          replace: "distributed =${{ steps.latest_version_distributed.outputs.version }}"
+
+      - name: Get latest dask-kubernetes version
+        id: latest_version_k8s
+        uses: jhamman/gha-anaconda-package-version@feature/calver
+        with:
+          org: "conda-forge"
+          package: "dask-kubernetes"
+
+      - name: Find and Replace Base
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "meta.yml"
+          find: "dask-kubernetes =.*"
+          replace: "dask-kubernetes =${{ steps.latest_version_k8s.outputs.version }}"
+
+      - name: Get latest dask-gateway version
+        id: latest_version_gateway
+        uses: jhamman/gha-anaconda-package-version@feature/calver
+        with:
+          org: "conda-forge"
+          package: "dask-gateway"
+
+      - name: Find and Replace Base
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "meta.yml"
+          find: "dask-gateway =.*"
+          replace: "dask-gateway =${{ steps.latest_version_gateway.outputs.version }}"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update pangeo-dask metapackage version(s)"
+          title: "Update pangeo-dask metapackage version(s)"
+          reviewers: "scottyhq"
+          branch: "upgrade-dask-versions"
+          body: |
+            One or more new Dask package versions have been detected.
+
+            Updated `meta.yml`s to use:
+                -  dask =`${{ steps.latest_version_dask.outputs.version }}`
+                -  distributed =`${{ steps.latest_version_distributed.outputs.version }}`
+                -  dask-kubernetes =`${{ steps.latest_version_kubernetes.outputs.version }}`
+                -  dask-gateway =`${{ steps.latest_version_gateway.outputs.version }}`
