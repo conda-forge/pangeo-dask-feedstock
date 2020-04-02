@@ -8,7 +8,7 @@ on:
 jobs:
   check-version:
     runs-on: ubuntu-latest
-    if: github.repository == 'conda-forge/pangeo-dask-feedstock'
+    # if: github.repository == 'conda-forge/pangeo-dask-feedstock'
 
     steps:
       - name: Checkout Repository
