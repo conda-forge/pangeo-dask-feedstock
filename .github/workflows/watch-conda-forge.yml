@@ -14,6 +14,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: calver
+        id: calver
+        run: echo "::set-output name=version::$(date +'%Y.%m.%d')"
+
       - name: Get latest dask version
         id: latest_version_dask
         uses: jhamman/gha-anaconda-package-version@feature/calver
@@ -21,7 +25,8 @@ jobs:
           org: "conda-forge"
           package: "dask"
 
-      - name: Find and Replace Base
+      - name: Find and Replace Dask
+        id: dask
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "meta.yml"
@@ -35,7 +40,8 @@ jobs:
           org: "conda-forge"
           package: "distributed"
 
-      - name: Find and Replace Base
+      - name: Find and Replace Distributed
+        id: distriubted
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "meta.yml"
@@ -49,7 +55,8 @@ jobs:
           org: "conda-forge"
           package: "dask-kubernetes"
 
-      - name: Find and Replace Base
+      - name: Find and Replace Dask-kubernetes
+        id: kubernetes
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "meta.yml"
@@ -63,12 +70,21 @@ jobs:
           org: "conda-forge"
           package: "dask-gateway"
 
-      - name: Find and Replace Base
+      - name: Find and Replace Dask-Gateway
+        id: gateway
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "meta.yml"
           find: "dask-gateway =.*"
           replace: "dask-gateway =${{ steps.latest_version_gateway.outputs.version }}"
+
+      - name: Find and Replace CalVer
+        if: steps.dask.outputs.modifiedFiles > 0 || steps.distributed.outputs.modifiedFiles > 0 || steps.kubernetes.outputs.modifiedFiles > 0 || steps.gateway.outputs.modifiedFiles > 0
+        uses: jacobtomlinson/gha-find-replace@0.1.1
+        with:
+          include: "meta.yml"
+          find: "{% set version = ".*" %}"
+          replace: "{% set version = \"${{ steps.calver.outputs.version }}\" %}"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
