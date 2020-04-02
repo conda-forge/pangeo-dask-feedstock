@@ -79,11 +79,11 @@ jobs:
           replace: "dask-gateway =${{ steps.latest_version_gateway.outputs.version }}"
 
       - name: Find and Replace CalVer
-        # if: steps.dask.outputs.modifiedFiles > 0 || steps.distributed.outputs.modifiedFiles > 0 || steps.kubernetes.outputs.modifiedFiles > 0 || steps.gateway.outputs.modifiedFiles > 0
+        if: steps.dask.outputs.modifiedFiles > 0 || steps.distributed.outputs.modifiedFiles > 0 || steps.kubernetes.outputs.modifiedFiles > 0 || steps.gateway.outputs.modifiedFiles > 0
         uses: jacobtomlinson/gha-find-replace@0.1.1
         with:
           include: "meta.yml"
-          find: "{% set version = ".*" %}"
+          find: "{% set version = \".*\" %}"
           replace: "{% set version = \"${{ steps.calver.outputs.version }}\" %}"
 
       - name: Create Pull Request
