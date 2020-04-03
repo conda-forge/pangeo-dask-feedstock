@@ -8,7 +8,7 @@ on:
 jobs:
   check-version:
     runs-on: ubuntu-latest
-    # if: github.repository == 'conda-forge/pangeo-dask-feedstock'
+    if: github.repository == 'conda-forge/pangeo-dask-feedstock'
 
     steps:
       - name: Checkout Repository
@@ -20,7 +20,7 @@ jobs:
 
       - name: Get latest dask version
         id: latest_version_dask
-        uses: jhamman/gha-anaconda-package-version@feature/calver
+        uses: jacobtomlinson/gha-anaconda-package-version@0.1.1
         with:
           org: "conda-forge"
           package: "dask"
@@ -35,7 +35,7 @@ jobs:
 
       - name: Get latest distributed version
         id: latest_version_distributed
-        uses: jhamman/gha-anaconda-package-version@feature/calver
+        uses: jacobtomlinson/gha-anaconda-package-version@0.1.1
         with:
           org: "conda-forge"
           package: "distributed"
@@ -50,7 +50,7 @@ jobs:
 
       - name: Get latest dask-kubernetes version
         id: latest_version_k8s
-        uses: jhamman/gha-anaconda-package-version@feature/calver
+        uses: jacobtomlinson/gha-anaconda-package-version@0.1.1
         with:
           org: "conda-forge"
           package: "dask-kubernetes"
@@ -65,7 +65,7 @@ jobs:
 
       - name: Get latest dask-gateway version
         id: latest_version_gateway
-        uses: jhamman/gha-anaconda-package-version@feature/calver
+        uses: jacobtomlinson/gha-anaconda-package-version@0.1.1
         with:
           org: "conda-forge"
           package: "dask-gateway"
