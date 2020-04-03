@@ -100,5 +100,5 @@ jobs:
             Updated `meta.yaml`s to use:
                 -  dask =`${{ steps.latest_version_dask.outputs.version }}`
                 -  distributed =`${{ steps.latest_version_distributed.outputs.version }}`
-                -  dask-kubernetes =`${{ steps.latest_version_kubernetes.outputs.version }}`
+                -  dask-kubernetes =`${{ steps.latest_version_k8s.outputs.version }}`
                 -  dask-gateway =`${{ steps.latest_version_gateway.outputs.version }}`
