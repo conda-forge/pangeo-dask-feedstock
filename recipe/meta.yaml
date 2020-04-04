@@ -1,17 +1,17 @@
-{% set version = "2020.04.03" %}
+{% set version = "2020.04.04" %}
 
 package:
   name: pangeo-dask
   version: {{ version }}
 
 build:
-  number: 1
+  number: 0
   noarch: generic
 
 requirements:
   run:
-    - dask =2.13.0
-    - distributed =2.13.0
+    - dask =2.14.0
+    - distributed =2.14.0
     - dask-kubernetes =0.10.1
     - dask-gateway =0.6.1
 
