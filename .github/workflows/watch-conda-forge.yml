@@ -14,6 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
+          repository: 'conda-forge/pangeo-dask-feedstock'
           ref: 'master'
   
       - name: Set Origin
