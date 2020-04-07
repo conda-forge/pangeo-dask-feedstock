@@ -8,7 +8,7 @@ on:
 jobs:
   check-version:
     runs-on: ubuntu-latest
-#     if: github.repository == 'pangeo-bot/pangeo-dask-feedstock'
+    if: github.repository == 'pangeo-bot/pangeo-dask-feedstock'
 
     steps:
       - name: Checkout Repository
