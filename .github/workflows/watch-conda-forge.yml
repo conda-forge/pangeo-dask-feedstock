@@ -14,7 +14,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
+          repository: 'conda-forge/pangeo-dask-feedstock'
           ref: 'master'
+  
+      - name: Set Origin
         run: |
           git config user.password ${{ secrets.PAT }}
           git remote set-url origin https://github.com/pangeo-bot/pangeo-dask-feedstock
