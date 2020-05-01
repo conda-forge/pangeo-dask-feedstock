@@ -11,7 +11,7 @@ build:
 requirements:
   run:
     - dask =2.15.0
-    - distributed =2.15.1
+    - distributed =2.15.2
     - dask-kubernetes =0.10.1
     - dask-gateway =0.7.1
 
