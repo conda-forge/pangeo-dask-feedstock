@@ -1,0 +1,16 @@
+on:
+  schedule:
+  - cron:  "*/5 * * * *"
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    if: github.repository == 'pangeo-bot/pangeo-dask-feedstock'
+    steps:
+    - uses: actions/checkout@master
+    - name: repo-sync
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: "conda-forge/pangeo-dask-feedstock"
+        source_branch: "master"
+        destination_branch: "master"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
