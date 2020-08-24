@@ -5,7 +5,7 @@ Home: http://pangeo.io
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: pangeo dask dependencies
 
