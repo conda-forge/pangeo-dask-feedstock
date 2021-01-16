@@ -5,11 +5,9 @@ Home: http://pangeo.io
 
 Package license: MIT
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pangeo-dask-feedstock/blob/master/LICENSE.txt)
 
 Summary: pangeo dask dependencies
-
-
 
 Current build status
 ====================
