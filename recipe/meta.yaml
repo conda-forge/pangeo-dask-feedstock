@@ -1,4 +1,4 @@
-{% set version = "2022.10.17" %}
+{% set version = "2022.10.02" %}
 
 package:
   name: pangeo-dask
