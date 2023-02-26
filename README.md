@@ -1,11 +1,11 @@
-About pangeo-dask
-=================
+About pangeo-dask-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pangeo-dask-feedstock/blob/main/LICENSE.txt)
 
 Home: http://pangeo.io
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pangeo-dask-feedstock/blob/main/LICENSE.txt)
 
 Summary: pangeo dask dependencies
 
@@ -146,4 +146,5 @@ Feedstock Maintainers
 * [@TomAugspurger](https://github.com/TomAugspurger/)
 * [@jhamman](https://github.com/jhamman/)
 * [@scottyhq](https://github.com/scottyhq/)
+* [@yuvipanda](https://github.com/yuvipanda/)
 
