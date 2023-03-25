@@ -1,4 +1,4 @@
-{% set version = "2023.03.11" %}
+{% set version = "2023.03.25" %}
 
 package:
   name: pangeo-dask
@@ -10,8 +10,8 @@ build:
 
 requirements:
   run:
-    - dask =2023.3.1
-    - distributed =2023.3.1
+    - dask =2023.3.2
+    - distributed =2023.3.2
     - dask-gateway =2023.1.1
 
 test:
