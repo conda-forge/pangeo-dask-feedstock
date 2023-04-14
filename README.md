@@ -148,6 +148,3 @@ Feedstock Maintainers
 * [@scottyhq](https://github.com/scottyhq/)
 * [@yuvipanda](https://github.com/yuvipanda/)
 
-
-<!-- dummy commit to enable rerendering -->
-
